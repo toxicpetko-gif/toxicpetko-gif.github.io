@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toxic petko | WoW Forever</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome pro ikony -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Cinzel & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        toxic: {
+                            DEFAULT: '#00ff66',
+                            glow: '#39ff14',
+                            dark: '#0a1f0d',
+                            accent: '#10b981'
+                        },
+                        horde: {
+                            dark: '#0d0d0d',
+                            card: '#141714',
+                            border: '#1f2e21'
+                        }
+                    },
+                    fontFamily: {
+                        warcraft: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #080a08;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Gothic / Toxic Glow Animations */
+        .toxic-glow-text {
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.6),
+                         0 0 20px rgba(0, 255, 102, 0.4),
+                         0 0 30px rgba(0, 255, 102, 0.2);
+        }
+
+        .toxic-border-glow {
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.25),
+                        inset 0 0 15px rgba(0, 255, 102, 0.1);
+        }
+
+        .toxic-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toxic-card-hover:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.5),
+                        0 0 5px rgba(57, 255, 20, 0.8);
+            border-color: #00ff66;
+        }
+
+        /* Custom Animated Background Particles Canvas */
+        #fog-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Pulse Animation for Live badge or accent */
+        @keyframes pulse-toxic {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.08); }
+        }
+
+        .animate-toxic-pulse {
+            animation: pulse-toxic 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between relative p-4 sm:p-6 md:p-8">
+
+    <!-- Animované toxické pozadí (Plazma / Částice) -->
+    <canvas id="fog-canvas"></canvas>
+
+    <!-- Radiální zelená záře v pozadí -->
+    <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-toxic/10 rounded-full blur-[120px] pointer-events-none animate-toxic-pulse"></div>
+
+    <!-- Hlavní kontejner rozcestníku -->
+    <main class="relative z-10 w-full max-w-md mx-auto my-auto flex flex-col items-center">
+
+        <!-- Profilová Sekce -->
+        <div class="relative group mb-6">
+            <!-- Neonový rámeček profilovky -->
+            <div class="absolute -inset-1 bg-gradient-to-r from-toxic via-emerald-500 to-green-400 rounded-full blur-md opacity-75 group-hover:opacity-100 transition duration-500 group-hover:duration-200"></div>
+            
+            <div class="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-horde-dark border-2 border-toxic/60 shadow-2xl overflow-hidden">
+                <!-- Obrázek profilovky s fallbackem -->
+                <img 
+                    src="logo.jpg" 
+                    alt="Toxic petko Profilovka" 
+                    onerror="this.src='https://placehold.co/300x300/0a1f0d/00ff66?text=Toxic+petko'"
+                    class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-110"
+                />
+            </div>
+            
+            <!-- Horde Íkona Badge -->
+            <div class="absolute bottom-1 right-1 bg-black/90 text-toxic border border-toxic/50 p-2 rounded-full shadow-lg flex items-center justify-center w-9 h-9" title="Za Hordu!">
+                <i class="fa-solid fa-skull text-base"></i>
+            </div>
+        </div>
+
+        <!-- Nadpis a podnadpis -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-black font-warcraft tracking-wider text-white uppercase mb-2 toxic-glow-text flex items-center justify-center gap-2">
+                Toxic petko
+            </h1>
+            
+            <p class="text-toxic-glow font-semibold text-sm sm:text-base tracking-widest uppercase flex items-center justify-center gap-2 text-emerald-400">
+                <span class="inline-block w-2 h-2 rounded-full bg-toxic animate-ping"></span>
+                WoW Forever | PVP ruleset | Forsaken
+            </p>
+
+            <p class="text-xs text-gray-400 mt-2 max-w-xs mx-auto italic">
+                "Death is only the beginning... Welcome to the Toxic Realm."
+            </p>
+        </div>
+
+        <!-- Odkazy / Tlačítka -->
+        <div class="w-full space-y-4">
+
+            <!-- TWITCH -->
+            <a href="https://www.twitch.tv/toxicpetko" target="_blank" rel="noopener noreferrer" 
+               class="toxic-card-hover group relative flex items-center p-4 rounded-xl bg-horde-card border border-horde-border text-white font-semibold shadow-lg overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-12 h-12 rounded-lg bg-purple-950/60 border border-purple-500/40 flex items-center justify-center text-purple-400 group-hover:text-purple-300 text-2xl transition-colors shrink-0">
+                    <i class="fa-brands fa-twitch"></i>
+                </div>
+                <div class="ml-4 flex-grow">
+                    <div class="text-base font-bold group-hover:text-toxic transition-colors">Twitch</div>
+                    <div class="text-xs text-gray-400">Sleduj živé WoW streamy</div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-toxic group-hover:translate-x-1 transition-all"></i>
+            </a>
+
+            <!-- YOUTUBE -->
+            <a href="https://www.youtube.com/@ToxicPetko" target="_blank" rel="noopener noreferrer" 
+               class="toxic-card-hover group relative flex items-center p-4 rounded-xl bg-horde-card border border-horde-border text-white font-semibold shadow-lg overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-red-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-12 h-12 rounded-lg bg-red-950/60 border border-red-500/40 flex items-center justify-center text-red-500 group-hover:text-red-400 text-2xl transition-colors shrink-0">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+                <div class="ml-4 flex-grow">
+                    <div class="text-base font-bold group-hover:text-toxic transition-colors">YouTube</div>
+                    <div class="text-xs text-gray-400">Videa, záznamy & kompilace</div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-toxic group-hover:translate-x-1 transition-all"></i>
+            </a>
+
+
+            <!-- INSTAGRAM -->
+            <a href="https://www.instagram.com/toxic.petko" target="_blank" rel="noopener noreferrer" 
+               class="toxic-card-hover group relative flex items-center p-4 rounded-xl bg-horde-card border border-horde-border text-white font-semibold shadow-lg overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-pink-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-12 h-12 rounded-lg bg-pink-950/60 border border-pink-500/40 flex items-center justify-center text-pink-500 group-hover:text-pink-400 text-2xl transition-colors shrink-0">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="ml-4 flex-grow">
+                    <div class="text-base font-bold group-hover:text-toxic transition-colors">Instagram</div>
+                    <div class="text-xs text-gray-400">Fotky, storyčka a novinky</div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-toxic group-hover:translate-x-1 transition-all"></i>
+            </a>
+
+            
+            <!-- TIKTOK -->
+            <a href="https://www.tiktok.com/@toxic.petko" target="_blank" rel="noopener noreferrer" 
+               class="toxic-card-hover group relative flex items-center p-4 rounded-xl bg-horde-card border border-horde-border text-white font-semibold shadow-lg overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-12 h-12 rounded-lg bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-center text-cyan-400 group-hover:text-cyan-300 text-2xl transition-colors shrink-0">
+                    <i class="fa-brands fa-tiktok"></i>
+                </div>
+                <div class="ml-4 flex-grow">
+                    <div class="text-base font-bold group-hover:text-toxic transition-colors">TikTok</div>
+                    <div class="text-xs text-gray-400">Krátké WoW klipy a šortky</div>
+                </div>
+                <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-toxic group-hover:translate-x-1 transition-all"></i>
+            </a>
+
+            
+
+        </div>
+
+    </main>
+
+    <!-- Patka -->
+    <footer class="relative z-10 text-center mt-12 text-xs text-gray-500 font-medium">
+        <p class="hover:text-toxic transition-colors cursor-default">
+            &copy; <span id="year"></span> <strong class="text-gray-300">Toxic petko</strong>. All rights reserved.
+        </p>
+        <p class="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">
+            For the Forsaken! <i class="fa-solid fa-biohazard text-toxic/70 ml-1"></i>
+        </p>
+    </footer>
+
+    <!-- Skript pro animované vznášející se toxické částice a aktuální rok -->
+    <script>
+        // Nastavení aktuálního roku
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Canvas animace toxického dýmu / částic
+        const canvas = document.getElementById('fog-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        // Třída částice (toxický zelený prach / dým)
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = height + Math.random() * 100;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = Math.random() * 1 + 0.3;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.maxOpacity = this.opacity;
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+
+                // Vyblednutí při stoupání nahoru
+                if (this.y < height * 0.8) {
+                    this.opacity -= 0.002;
+                }
+
+                if (this.y < 0 || this.opacity <= 0) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 255, 102, ${this.opacity})`;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#00ff66';
+                ctx.fill();
+                ctx.shadowBlur = 0; // reset
+            }
+        }
+
+        const particles = Array.from({ length: 45 }, () => new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        window.onload = function() {
+            animate();
+        };
+    </script>
+</body>
+</html>
