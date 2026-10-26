@@ -88,6 +88,13 @@
         .animate-toxic-pulse {
             animation: pulse-toxic 3s infinite ease-in-out;
         }
+
+        .fa-kick::before {
+  font-family: 'Arial Black', sans-serif;
+  font-weight: bold;
+  content: 'K';
+  font-size: 1.1em;
+}
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-between relative p-4 sm:p-6 md:p-8">
@@ -159,6 +166,27 @@
                 </div>
                 <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-toxic group-hover:translate-x-1 transition-all"></i>
             </a>
+            <!-- KICK -->
+<a href="https://www.kick.com/toxicpetko" target="_blank" rel="noopener noreferrer" 
+   class="toxic-card-hover group relative flex items-center p-4 rounded-xl bg-horde-card border border-horde-border text-white font-semibold shadow-lg overflow-hidden">
+    <!-- Gradient na pozadí při hoveru -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#53FC18]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    
+    <!-- Ikona s Kick zelenou -->
+    <div class="w-12 h-12 rounded-lg bg-[#53FC18]/10 border border-[#53FC18]/30 flex items-center justify-center text-[#53FC18] group-hover:bg-[#53FC18]/20 text-2xl transition-all shrink-0">
+        <i class="fa-brands fa-kick"></i>
+    </div>
+    
+    <!-- Texty -->
+    <div class="ml-4 flex-grow">
+        <div class="text-base font-bold group-hover:text-[#53FC18] transition-colors">Kick</div>
+        <div class="text-xs text-gray-400">Sleduj živé WoW streamy</div>
+    </div>
+    
+    <!-- Šipka -->
+    <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-[#53FC18] group-hover:translate-x-1 transition-all"></i>
+</a>
+
 
             <!-- YOUTUBE -->
             <a href="https://www.youtube.com/@ToxicPetko" target="_blank" rel="noopener noreferrer" 
@@ -199,7 +227,7 @@
                 </div>
                 <div class="ml-4 flex-grow">
                     <div class="text-base font-bold group-hover:text-toxic transition-colors">TikTok</div>
-                    <div class="text-xs text-gray-400">Krátké WoW klipy a šortky</div>
+                    <div class="text-xs text-gray-400">Krátké WoW klipy a shorty</div>
                 </div>
                 <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-toxic group-hover:translate-x-1 transition-all"></i>
             </a>
